@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>cdec translate</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>
+        <script src="{{url_for('static', filename='jquery.js')}}"></script>
+        <script>
+        $(function() {
+            $('#translate').click(function() {
+                var input = $('#input').val();
+                $("#status").text("Translating...")
+                            .css("color", "green");
+                $("#translate").attr("disabled", true);
+                $("#output").css("color", "#888");
+                $.getJSON("{{url_for('translate')}}", {input: input}, function(data) {
+                    $("#output").css("color", "black")
+                                .html(data["output"]);
+                    $("#status").text("Done")
+                                .css("color", "#888");
+                    $("#translate").attr("disabled", false);
+                })
+                .error(function(){
+                    $("#status").text("Error translating")
+                                .css("color", "red");
+                    $("#translate").attr("disabled", false);
+                })
+            });
+            $("#status").text("Ready");
+        });
+        </script>
+    </head>
+    <body>
+        <textarea id="input">Fiara roa nitovy lalana samy hiakandrefana no nifandona. Vokany, olona telo no naratra. Ny fiara iray mini bus Toyota ary ilay faharoa Peugeot 205.</textarea>
+        <button id="translate">Translate</button>
+        <div id="output"></div>
+        <span id="status"></span>
+    </body>
+</html>
+

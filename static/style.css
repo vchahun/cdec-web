@@ -1,0 +1,40 @@
+body {
+    margin: 10px;
+    font: 100% "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#input, #output, #translate {
+    border-radius: 5px;
+    border: 1px solid #888;
+}
+
+#input, #output {
+    width: 600px;
+    min-height: 300px;
+    font-size: 100%;
+    padding: 5px;
+    margin: 0;
+}
+
+#input {
+    display: block;
+    font: inherit;
+}
+
+#translate {
+    background: none;
+    font-family: inherit;
+    font-size: 150%;
+}
+
+#output {
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 650px;
+}
+
+#status {
+    line-height:50px;
+    color: #888
+}
