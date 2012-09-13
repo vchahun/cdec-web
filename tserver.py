@@ -1,6 +1,6 @@
 import logging
 import zmq
-import cdec, cdec.scfg
+import cdec, cdec.sa
 import config
 
 logger = logging.getLogger()
@@ -21,7 +21,7 @@ def translation_server(translator, host, port):
         logger.info('Interrupted')
 
 def translator():
-    extractor = cdec.scfg.GrammarExtractor(config.__dict__)
+    extractor = cdec.sa.GrammarExtractor(config.sa_config)
     decoder = cdec.Decoder(config.cdec_config)
     decoder.read_weights(config.cdec_weights)
 
